@@ -63,7 +63,7 @@ const MediaContent = () => {
       <ContainerScroll
         titleComponent={
           <>
-            <h1 className="text-4xl font-semibold text-emerald-500 dark:text-white">
+            <h1 className="text-4xl font-semibold text-primary">
               Parel Cha Maharaja
             </h1>
           </>
@@ -74,7 +74,7 @@ const MediaContent = () => {
           alt="Ganesha"
           width={3352}
           height={2267}
-          className="mx-auto rounded-2xl object-cover h-full object-left-top"
+          className="mx-auto rounded-2xl object-cover h-full object-center"
           draggable={false}
         />
       </ContainerScroll>
