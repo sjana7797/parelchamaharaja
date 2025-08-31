@@ -20,6 +20,7 @@ import { MarqueeGallery } from "@/components/gallery/marquee-gallery";
 import Hero from "@/components/hero";
 import AboutUs from "@/features/home/components/about-us";
 import Events from "@/features/home/components/events";
+import { GaneshaTimeline } from "@/features/home/components/timeline";
 
 const fetcher = (url: string) => fetch(url).then((r) => r.json());
 
@@ -334,6 +335,7 @@ export default function Page() {
     <main className="body-font">
       <Hero />
       <AboutUs />
+      <GaneshaTimeline />
       <SocialFeed />
       <Donate />
       <Events />
