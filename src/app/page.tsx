@@ -15,7 +15,6 @@ import {
   HeartHandshake,
 } from "lucide-react";
 import UpiQR from "@/features/donation/components/upi-qr";
-import dynamic from "next/dynamic";
 import { MarqueeGallery } from "@/components/gallery/marquee-gallery";
 import Hero from "@/components/hero";
 import AboutUs from "@/features/home/components/about-us";
@@ -202,38 +201,6 @@ function Event() {
   );
 }
 
-function Gallery() {
-  const images = [
-    {
-      src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/parel-cha-maharaja-this-year-v0-nqmur317dilf1.jpg-3FwKVBzaPizY8PAKLf5aVDJ5owB9v2.jpeg",
-      alt: "Parel Cha Maharaja — Lord Ganesha",
-    },
-    { src: "/devotees-during-aarti.png", alt: "Devotees during aarti" },
-    {
-      src: "/evening-lighting-at-pandal.png",
-      alt: "Evening lighting at the pandal",
-    },
-    { src: "/eco-visarjan.png", alt: "Eco-friendly visarjan" },
-    { src: "/cultural-program.png", alt: "Cultural program" },
-  ];
-
-  return (
-    <section id="gallery" className="bg-white py-14">
-      <div className="mx-auto max-w-5xl px-6">
-        <h2 className="heading-font text-pretty text-3xl md:text-4xl festive-maroon">
-          Gallery
-        </h2>
-        <p className="mt-2 text-muted-foreground">
-          Hover to pause. Tap and hold on mobile to pause.
-        </p>
-        <div className="mt-6">
-          <MarqueeGallery images={images} />
-        </div>
-      </div>
-    </section>
-  );
-}
-
 function Testimonials() {
   const quotes = [
     {
@@ -339,7 +306,7 @@ export default function Page() {
       <SocialFeed />
       <Donate />
       <Events />
-      <Gallery />
+      <MarqueeGallery />
       <Testimonials />
       <VisitUs />
       <Footer />

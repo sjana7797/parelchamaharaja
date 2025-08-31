@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import ScrollExpandMedia from "@/components/scroll-expansion-hero";
 import Image from "next/image";
+import { ContainerScroll } from "@/components/ui/container-scroll-animation";
 
 interface MediaAbout {
   overview: string;
@@ -58,24 +59,25 @@ const sampleMediaContent: MediaContentCollection = {
 
 const MediaContent = () => {
   return (
-    <div className="mx-auto">
-      <h2 className="text-3xl font-bold mb-6 text-primary dark:text-white text-center">
-        Parel Cha Maharaja
-      </h2>
-      <p className="text-lg mb-8 text-black dark:text-white text-center">
-        Join the celebrations of Mumbai’s beloved Ganpati. Experience devotion,
-        culture, and tradition at Parel Cha Raja.
-      </p>
-
-      <div className="p-2 bg-red-400/20 rounded-lg">
+    <div className="flex flex-col overflow-hidden">
+      <ContainerScroll
+        titleComponent={
+          <>
+            <h1 className="text-4xl font-semibold text-emerald-500 dark:text-white">
+              Parel Cha Maharaja
+            </h1>
+          </>
+        }
+      >
         <Image
           src="/images/ganesha-hero.jpg"
           alt="Ganesha"
           width={3352}
           height={2267}
-          className="w-full h-auto rounded-lg"
+          className="mx-auto rounded-2xl object-cover h-full object-left-top"
+          draggable={false}
         />
-      </div>
+      </ContainerScroll>
     </div>
   );
 };
