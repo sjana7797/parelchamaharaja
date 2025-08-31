@@ -18,136 +18,10 @@ import UpiQR from "@/features/donation/components/upi-qr";
 import dynamic from "next/dynamic";
 import { MarqueeGallery } from "@/components/gallery/marquee-gallery";
 import Hero from "@/components/hero";
+import AboutUs from "@/features/home/components/about-us";
+import Events from "@/features/home/components/events";
 
 const fetcher = (url: string) => fetch(url).then((r) => r.json());
-
-function Heros() {
-  const { scrollY } = useScroll();
-  const y = useTransform(scrollY, [0, 400], [0, 60]);
-
-  return (
-    <section className="relative h-[90vh] w-full overflow-hidden">
-      <motion.img
-        src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/parel-cha-maharaja-this-year-v0-nqmur317dilf1.jpg-3FwKVBzaPizY8PAKLf5aVDJ5owB9v2.jpeg"
-        alt="Lord Ganesha idol at Parel Cha Maharaja pandal"
-        className="absolute inset-0 z-[-10] h-full w-full object-cover object-top"
-        style={{ y }}
-        initial={{ scale: 1.05 }}
-        animate={{ scale: 1 }}
-        transition={{ duration: 5, ease: "easeOut" }}
-      />
-
-      {/* <div className="absolute inset-0 z-0 pointer-events-none">
-        <Suspense fallback={null}>
-          <GaneshThreeScene imageUrl="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/parel-cha-maharaja-this-year-v0-nqmur317dilf1.jpg-3FwKVBzaPizY8PAKLf5aVDJ5owB9v2.jpeg" />
-        </Suspense>
-      </div> */}
-
-      <div className="absolute inset-0 z-10 bg-gradient-to-b from-black/50 via-black/30 to-black/60" />
-
-      <div className="relative z-20 mx-auto flex h-full max-w-5xl flex-col items-start justify-center px-6 text-white">
-        <h1 className="heading-font text-pretty text-4xl font-semibold md:text-6xl">
-          Parel Cha Maharaja – Ganesh Utsav Mandal 2025
-        </h1>
-        <p className="body-font mt-4 max-w-2xl text-lg leading-relaxed">
-          Experience the divine celebrations of Mumbai’s beloved Bappa.
-        </p>
-        <div className="mt-6">
-          <a href="#events" aria-label="Scroll to Events section">
-            <Button className="bg-amber-600 text-white hover:bg-amber-700">
-              Join the Celebration
-            </Button>
-          </a>
-          <a
-            href="#donate"
-            aria-label="Scroll to Donate section"
-            className="ml-3"
-          >
-            <Button
-              variant="link"
-              className="text-white border-white border rounded-lg hover:no-underline hover:bg-background hover:text-foreground"
-            >
-              Donate Now
-            </Button>
-          </a>
-        </div>
-      </div>
-
-      {/* Floating festive accents using placeholders */}
-      {/* <img
-        src="/diya-icon.png"
-        alt="Floating diya"
-        className="float-slow absolute left-6 top-8 z-30 opacity-90 md:w-20 w-10 object-contain"
-      />
-      <img
-        src="/modak-sweet-icon.png"
-        alt="Floating modak"
-        className="float-slow absolute right-8 top-16 z-30 md:w-20 w-10 object-contain"
-        style={{ animationDelay: "1s" }}
-      />
-      <img
-        src="/marigold-flower-icon.png"
-        alt="Floating marigold flower"
-        className="float-slow absolute bottom-10 right-12 z-30 md:w-20 w-10 object-contain"
-        style={{ animationDelay: "2s" }}
-      /> */}
-    </section>
-  );
-}
-
-function About() {
-  const items = [
-    {
-      year: "1965",
-      text: "Mandal founded to celebrate Ganesh Utsav in the heart of Parel.",
-    },
-    {
-      year: "1989",
-      text: "Introduced large-scale seva drives and inclusive community programs.",
-    },
-    {
-      year: "2008",
-      text: "Eco-friendly immersion initiatives and crowd-first planning.",
-    },
-    {
-      year: "2025",
-      text: "Digital darshan, live aartis, and expanded social initiatives.",
-    },
-  ];
-  return (
-    <section id="about" className="body-font mx-auto max-w-5xl px-6 py-14">
-      <h2 className="heading-font text-pretty text-3xl md:text-4xl festive-maroon">
-        About the Mandal
-      </h2>
-      <p className="mt-4 max-w-3xl leading-relaxed">
-        Parel Cha Maharaja is one of Mumbai’s most loved Ganpati mandals, known
-        for devotion, discipline, and social service. Each year, lakhs of
-        devotees visit to seek the blessings of Bappa. Keywords: Ganesh Utsav
-        Parel, Mumbai Ganpati 2025, Parel Cha Raja Mandal, live darshan, aarti
-        timings, cultural programs, charity and blood donation.
-      </p>
-
-      <div className="mt-8">
-        <ol className="relative border-l border-amber-600/40 pl-6">
-          {items.map((i, idx) => (
-            <motion.li
-              key={i.year}
-              className="mb-6"
-              initial={{ opacity: 0, x: -16 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: idx * 0.08 }}
-            >
-              <span className="absolute -left-[9px] mt-1 h-4 w-4 rounded-full bg-amber-600" />
-              <p className="text-sm font-medium text-amber-700">{i.year}</p>
-              <p className="mt-1">{i.text}</p>
-            </motion.li>
-          ))}
-        </ol>
-      </div>
-    </section>
-  );
-}
 
 function SocialFeed() {
   const { data } = useSWR("/api/social", fetcher, { refreshInterval: 30000 });
@@ -194,7 +68,7 @@ function SocialFeed() {
 
         {/* Auto-updating grid */}
         <div className="mt-8 grid grid-cols-2 gap-4 md:grid-cols-4">
-           {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
+          {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
           {(data?.posts ?? []).map((p: any) => (
             <a
               key={p.id}
@@ -256,7 +130,7 @@ function Donate() {
   );
 }
 
-function Events() {
+function Event() {
   const cards = [
     {
       icon: <Clock className="h-5 w-5 text-yellow-600" />,
@@ -459,7 +333,7 @@ export default function Page() {
   return (
     <main className="body-font">
       <Hero />
-      <About />
+      <AboutUs />
       <SocialFeed />
       <Donate />
       <Events />
