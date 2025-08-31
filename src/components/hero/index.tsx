@@ -187,7 +187,7 @@ export const ImageExpansion = () => {
 };
 
 const Hero = () => {
-  const [mediaType, setMediaType] = useState("video");
+  const [mediaType] = useState("video");
   const currentMedia = sampleMediaContent[mediaType];
 
   useEffect(() => {

@@ -21,14 +21,6 @@ import Hero from "@/components/hero";
 
 const fetcher = (url: string) => fetch(url).then((r) => r.json());
 
-const GaneshThreeScene = dynamic(
-  () =>
-    import("@/components/three/ganesh-three-scene").then(
-      (m) => m.GaneshThreeScene
-    ),
-  { ssr: false, loading: () => null }
-);
-
 function Heros() {
   const { scrollY } = useScroll();
   const y = useTransform(scrollY, [0, 400], [0, 60]);
@@ -202,6 +194,7 @@ function SocialFeed() {
 
         {/* Auto-updating grid */}
         <div className="mt-8 grid grid-cols-2 gap-4 md:grid-cols-4">
+           {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
           {(data?.posts ?? []).map((p: any) => (
             <a
               key={p.id}
